@@ -18,7 +18,12 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.hydromatic</groupId>
+  <parent>
+    <groupId>net.hydromatic</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.1</version>
+  </parent>
+
   <artifactId>foodmart-data-mysql</artifactId>
   <version>0.10-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -69,15 +74,8 @@ limitations under the License.
     <top.dir>${project.basedir}</top.dir>
   </properties>
 
-
   <!-- Environment settings. -->
   <distributionManagement>
-    <repository>
-      <id>conjars</id>
-      <name>Concurrent Conjars repository</name>
-      <url>http://conjars.org/repo</url>
-      <layout>default</layout>
-    </repository>
     <site>
       <id>foodmart-data-mysql.website</id>
       <name>Foodmart data MySQL Website</name>
@@ -97,41 +95,15 @@ limitations under the License.
     <tag>HEAD</tag>
   </scm>
 
+  <prerequisites>
+    <maven>3.2.1</maven><!-- prerequisite of some plugins -->
+  </prerequisites>
+
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.4.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.9</version>
-        </plugin>
-        <plugin>
-          <groupId>pl.project13.maven</groupId>
-          <artifactId>git-commit-id-plugin</artifactId>
-          <version>2.1.9</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <!-- See parent POM -->
+    <pluginManagement/>
 
     <plugins>
-      <plugin>
-        <!-- If we don't specify gitexe version, git doesn't
-             commit during release process. -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-provider-gitexe</artifactId>
-            <version>1.9.1</version>
-          </dependency>
-        </dependencies>
-      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
