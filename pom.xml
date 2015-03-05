@@ -25,7 +25,7 @@ limitations under the License.
   </parent>
 
   <artifactId>foodmart-data-mysql</artifactId>
-  <version>0.10-SNAPSHOT</version>
+  <version>0.10</version>
   <packaging>jar</packaging>
 
   <name>foodmart-data-mysql</name>
@@ -92,7 +92,7 @@ limitations under the License.
     <connection>scm:git:git://github.com/julianhyde/foodmart-data-mysql.git</connection>
     <developerConnection>scm:git:git@github.com:julianhyde/foodmart-data-mysql.git</developerConnection>
     <url>scm:git:git://github.com/julianhyde/foodmart-data-mysql.git</url>
-    <tag>HEAD</tag>
+    <tag>foodmart-data-mysql-0.10</tag>
   </scm>
 
   <prerequisites>
@@ -101,7 +101,7 @@ limitations under the License.
 
   <build>
     <!-- See parent POM -->
-    <pluginManagement/>
+    <pluginManagement />
 
     <plugins>
       <plugin>
