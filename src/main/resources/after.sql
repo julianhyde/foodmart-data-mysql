@@ -7,12 +7,12 @@
 # lost "promotion_id" "store_id"
 
 INSERT INTO "agg_pl_01_sales_fact_1997" (
-    "product_id", 
+    "product_id",
     "time_id",
     "customer_id",
-    "store_sales_sum", 
-    "store_cost_sum", 
-    "unit_sales_sum", 
+    "store_sales_sum",
+    "store_cost_sum",
+    "unit_sales_sum",
     "fact_count"
 ) SELECT
     "product_id" AS "product_id",
@@ -27,12 +27,12 @@ GROUP BY "product_id", "time_id", "customer_id";
 
 
 INSERT INTO "agg_ll_01_sales_fact_1997" (
-    "product_id", 
+    "product_id",
     "time_id",
     "customer_id",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "product_id" AS "product_id",
@@ -53,11 +53,11 @@ GROUP BY "product_id", "time_id", "customer_id";
 
 
 INSERT INTO "agg_l_03_sales_fact_1997" (
-    "customer_id", 
+    "customer_id",
     "time_id",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "customer_id",
@@ -81,9 +81,9 @@ INSERT INTO "agg_lc_06_sales_fact_1997" (
     "city",
     "state_province",
     "country",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "B"."time_id",
@@ -95,9 +95,9 @@ INSERT INTO "agg_lc_06_sales_fact_1997" (
     SUM("B"."unit_sales") AS "unit_sales",
     COUNT(*) AS fact_count
 FROM "sales_fact_1997" "B", "customer" "D"
-WHERE 
+WHERE
     "B"."customer_id" = "D"."customer_id"
-GROUP BY 
+GROUP BY
          "B"."time_id",
          "D"."city",
          "D"."state_province",
@@ -111,10 +111,10 @@ GROUP BY
 
 INSERT INTO "agg_l_04_sales_fact_1997" (
     "time_id",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
-    "customer_count", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
+    "customer_count",
     "fact_count"
 ) SELECT
     "time_id",
@@ -137,10 +137,10 @@ INSERT INTO "agg_c_10_sales_fact_1997" (
     "month_of_year",
     "quarter",
     "the_year",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
-    "customer_count", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
+    "customer_count",
     "fact_count"
 ) SELECT
     "D"."month_of_year",
@@ -152,9 +152,9 @@ INSERT INTO "agg_c_10_sales_fact_1997" (
     COUNT(DISTINCT "customer_id") AS "customer_count",
     COUNT(*) AS fact_count
 FROM "sales_fact_1997" "B", "time_by_day" "D"
-WHERE 
+WHERE
     "B"."time_id" = "D"."time_id"
-GROUP BY 
+GROUP BY
          "D"."month_of_year",
          "D"."quarter",
          "D"."the_year";
@@ -171,9 +171,9 @@ INSERT INTO "agg_l_05_sales_fact_1997" (
     "customer_id",
     "promotion_id",
     "store_id",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "product_id",
@@ -196,16 +196,16 @@ GROUP BY "product_id", "customer_id", "promotion_id", "store_id";
 
 
 INSERT INTO "agg_c_14_sales_fact_1997" (
-    "product_id", 
+    "product_id",
     "customer_id",
     "promotion_id",
     "store_id",
     "month_of_year",
     "quarter",
     "the_year",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "B"."product_id",
@@ -220,12 +220,12 @@ INSERT INTO "agg_c_14_sales_fact_1997" (
     SUM("B"."unit_sales") AS "unit_sales",
     COUNT(*) AS fact_count
 FROM "sales_fact_1997" "B", "time_by_day" "D"
-WHERE 
+WHERE
     "B"."time_id" = "D"."time_id"
-GROUP BY "B"."product_id", 
-         "B"."customer_id", 
+GROUP BY "B"."product_id",
+         "B"."customer_id",
          "B"."promotion_id",
-         "B"."store_id", 
+         "B"."store_id",
          "D"."month_of_year",
          "D"."quarter",
          "D"."the_year";
@@ -240,13 +240,13 @@ GROUP BY "B"."product_id",
 
 
 INSERT INTO "agg_lc_100_sales_fact_1997" (
-    "product_id", 
+    "product_id",
     "customer_id",
     "quarter",
     "the_year",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
     "fact_count"
 ) SELECT
     "B"."product_id",
@@ -258,10 +258,10 @@ INSERT INTO "agg_lc_100_sales_fact_1997" (
     SUM("B"."unit_sales") AS "unit_sales",
     COUNT(*) AS fact_count
 FROM "sales_fact_1997" "B", "time_by_day" "D"
-WHERE 
+WHERE
     "B"."time_id" = "D"."time_id"
-GROUP BY "B"."product_id", 
-         "B"."customer_id", 
+GROUP BY "B"."product_id",
+         "B"."customer_id",
          "D"."quarter",
          "D"."the_year";
 
@@ -278,16 +278,16 @@ GROUP BY "B"."product_id",
 
 
 INSERT INTO "agg_c_special_sales_fact_1997" (
-    "product_id", 
+    "product_id",
     "customer_id",
     "promotion_id",
     "store_id",
     "time_month",
     "time_quarter",
     "time_year",
-    "store_sales_sum", 
-    "store_cost_sum", 
-    "unit_sales_sum", 
+    "store_sales_sum",
+    "store_cost_sum",
+    "unit_sales_sum",
     "fact_count"
 ) SELECT
     "B"."product_id",
@@ -302,12 +302,12 @@ INSERT INTO "agg_c_special_sales_fact_1997" (
     SUM("B"."unit_sales") AS "unit_sales_sum",
     COUNT(*) AS "fact_count"
 FROM "sales_fact_1997" "B", "time_by_day" "D"
-WHERE 
+WHERE
     "B"."time_id" = "D"."time_id"
-GROUP BY "B"."product_id", 
-         "B"."customer_id", 
+GROUP BY "B"."product_id",
+         "B"."customer_id",
          "B"."promotion_id",
-         "B"."store_id", 
+         "B"."store_id",
          "D"."month_of_year",
          "D"."quarter",
          "D"."the_year";
@@ -317,7 +317,7 @@ GROUP BY "B"."product_id",
 ##################################################################
 
 INSERT INTO "agg_g_ms_pcat_sales_fact_1997" (
-    "gender", 
+    "gender",
     "marital_status",
     "product_family",
     "product_department",
@@ -325,10 +325,10 @@ INSERT INTO "agg_g_ms_pcat_sales_fact_1997" (
     "month_of_year",
     "quarter",
     "the_year",
-    "store_sales", 
-    "store_cost", 
-    "unit_sales", 
-    "customer_count", 
+    "store_sales",
+    "store_cost",
+    "unit_sales",
+    "customer_count",
     "fact_count"
 ) SELECT
     "C"."gender",
@@ -349,12 +349,12 @@ FROM "sales_fact_1997" "B",
     "product" "P",
     "product_class" "PC",
     "customer" "C"
-WHERE 
+WHERE
     "B"."time_id" = "T"."time_id"
 AND "B"."customer_id" = "C"."customer_id"
 AND "B"."product_id" = "P"."product_id"
 AND "P"."product_class_id" = "PC"."product_class_id"
-GROUP BY 
+GROUP BY
     "C"."gender",
     "C"."marital_status",
     "PC"."product_family",
@@ -368,7 +368,7 @@ GROUP BY
 # COUNT(DISTINCT ...) explicitly.
 #
 #INSERT INTO "agg_g_ms_pcat_sales_fact_1997" (
-#    "gender", 
+#    "gender",
 #    "marital_status",
 #    "product_family",
 #    "product_department",
@@ -376,10 +376,10 @@ GROUP BY
 #    "month_of_year",
 #    "quarter",
 #    "the_year",
-#    "store_sales", 
-#    "store_cost", 
-#    "unit_sales", 
-#    "customer_count", 
+#    "store_sales",
+#    "store_cost",
+#    "unit_sales",
+#    "customer_count",
 #    "fact_count"
 #) SELECT
 #    "C"."gender",
@@ -412,7 +412,7 @@ GROUP BY
 #            "product" "DP",
 #            "product_class" "DPC",
 #            "customer" "DC"
-#        WHERE 
+#        WHERE
 #            "DB"."time_id" = "DT"."time_id"
 #        AND "DB"."customer_id" = "DC"."customer_id"
 #        AND "DB"."product_id" = "DP"."product_id"
@@ -425,7 +425,7 @@ GROUP BY
 #    AND "CDC"."month_of_year" = "T"."month_of_year"
 #    AND "CDC"."quarter" = "T"."quarter"
 #    AND "CDC"."the_year" = "T"."the_year"
-#    GROUP BY 
+#    GROUP BY
 #        "gender",
 #        "marital_status",
 #        "product_family",
@@ -440,12 +440,12 @@ GROUP BY
 #    "product" "P",
 #    "product_class" "PC",
 #    "customer" "C"
-#WHERE 
+#WHERE
 #    "B"."time_id" = "T"."time_id"
 #AND "B"."customer_id" = "C"."customer_id"
 #AND "B"."product_id" = "P"."product_id"
 #AND "P"."product_class_id" = "PC"."product_class_id"
-#GROUP BY 
+#GROUP BY
 #    "C"."gender",
 #    "C"."marital_status",
 #    "PC"."product_family",
