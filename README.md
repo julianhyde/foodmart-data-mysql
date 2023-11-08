@@ -19,6 +19,7 @@ License.
 {% endcomment %}
 -->
 [![Build Status](https://github.com/julianhyde/foodmart-data-mysql/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/julianhyde/foodmart-data-mysql/actions?query=branch%3Amain)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-mysql/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-mysql)
 
 # foodmart-data-mysql
 Foodmart data set in MySQL format
